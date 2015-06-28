@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		396C3A0C1B3DBF160083DA49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396C3A0B1B3DBF160083DA49 /* AppDelegate.swift */; };
-		396C3A0E1B3DBF160083DA49 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396C3A0D1B3DBF160083DA49 /* ViewController.swift */; };
 		396C3A111B3DBF160083DA49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 396C3A0F1B3DBF160083DA49 /* Main.storyboard */; };
 		396C3A131B3DBF160083DA49 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 396C3A121B3DBF160083DA49 /* Images.xcassets */; };
 		396C3A161B3DBF170083DA49 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 396C3A141B3DBF170083DA49 /* LaunchScreen.xib */; };
 		396C3A221B3DBF190083DA49 /* lpapprovalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396C3A211B3DBF190083DA49 /* lpapprovalTests.swift */; };
+		396C3A2E1B3DC1850083DA49 /* lpApprovalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396C3A2D1B3DC1850083DA49 /* lpApprovalVC.swift */; };
+		396C3A301B3DDD4B0083DA49 /* IpApprovalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396C3A2F1B3DDD4B0083DA49 /* IpApprovalCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,13 +30,14 @@
 		396C3A061B3DBF160083DA49 /* lpapproval.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lpapproval.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		396C3A0A1B3DBF160083DA49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		396C3A0B1B3DBF160083DA49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		396C3A0D1B3DBF160083DA49 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		396C3A101B3DBF160083DA49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		396C3A121B3DBF160083DA49 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		396C3A151B3DBF170083DA49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		396C3A1B1B3DBF190083DA49 /* lpapprovalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = lpapprovalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		396C3A201B3DBF190083DA49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		396C3A211B3DBF190083DA49 /* lpapprovalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lpapprovalTests.swift; sourceTree = "<group>"; };
+		396C3A2D1B3DC1850083DA49 /* lpApprovalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = lpApprovalVC.swift; sourceTree = "<group>"; };
+		396C3A2F1B3DDD4B0083DA49 /* IpApprovalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IpApprovalCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,10 +80,11 @@
 			isa = PBXGroup;
 			children = (
 				396C3A0B1B3DBF160083DA49 /* AppDelegate.swift */,
-				396C3A0D1B3DBF160083DA49 /* ViewController.swift */,
 				396C3A0F1B3DBF160083DA49 /* Main.storyboard */,
 				396C3A121B3DBF160083DA49 /* Images.xcassets */,
 				396C3A141B3DBF170083DA49 /* LaunchScreen.xib */,
+				396C3A2D1B3DC1850083DA49 /* lpApprovalVC.swift */,
+				396C3A2F1B3DDD4B0083DA49 /* IpApprovalCell.swift */,
 				396C3A091B3DBF160083DA49 /* Supporting Files */,
 			);
 			path = lpapproval;
@@ -212,8 +215,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				396C3A0E1B3DBF160083DA49 /* ViewController.swift in Sources */,
 				396C3A0C1B3DBF160083DA49 /* AppDelegate.swift in Sources */,
+				396C3A2E1B3DC1850083DA49 /* lpApprovalVC.swift in Sources */,
+				396C3A301B3DDD4B0083DA49 /* IpApprovalCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
