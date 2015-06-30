@@ -118,6 +118,7 @@ class lpApprovalVC: UICollectionViewController {
                 cell.pending.enabled = true
                 if cell.lblStatus.text == "Approved" {
                     cell.approve.enabled = false
+                    cell.pending.enabled = false
                 } else if cell.lblStatus.text == "Pending for Approval" {
                     cell.pending.enabled = false
                 } else if cell.lblStatus.text == "Rejected" {
@@ -144,7 +145,7 @@ class lpApprovalVC: UICollectionViewController {
     func pending(sender: UIButton)
     {
         var i = sender.layer.valueForKey("index") as! Int
-        if let jsonPut = formJSONStringForPut(i,status: "Pending for Approval") {
+        if let jsonPut = formJSONStringForPut(i,status: "Rejected") {
             putHTTPDataWithJSONString(jsonPut)
             print(jsonPut)
         }
