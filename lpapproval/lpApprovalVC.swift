@@ -14,6 +14,7 @@ class lpApprovalVC: UICollectionViewController {
 
     var lpApprovalData = [Int : NSMutableDictionary]()
     var refreshControl : UIRefreshControl!
+    var label = UILabel()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,9 +29,14 @@ class lpApprovalVC: UICollectionViewController {
         refreshControl.attributedTitle = NSAttributedString(string: "Pull down to refresh")
         refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         collectionView?.addSubview(refreshControl)
-        fetchData()
+        //fetchData()
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        fetchData()
     }
     
     func fetchData()
@@ -45,10 +51,16 @@ class lpApprovalVC: UICollectionViewController {
                     var totalRecords = dict["total_rows"] as! Int
                     if let rows: AnyObject = dict["rows"] {
                         var i : Int = 0
+                        var j : Int = 1
                         while(i < totalRecords)
                         {
-                            self.lpApprovalData[i+1] = rows[i]["doc"] as? NSMutableDictionary
-                            i++                            
+                            var tempDict = rows[i]["doc"] as! NSMutableDictionary
+                            var status = tempDict["status"] as? String
+                            if status?.uppercaseString == "Pending For Approval".uppercaseString {
+                                self.lpApprovalData[j] = rows[i]["doc"] as? NSMutableDictionary
+                                j++
+                            }
+                            i++
                         }
                         print(self.lpApprovalData)
                     }
@@ -57,6 +69,18 @@ class lpApprovalVC: UICollectionViewController {
                     self.collectionView?.reloadData()
                     UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                     self.refreshControl.endRefreshing()
+                    if self.lpApprovalData.count == 0 {
+                        self.label.frame = CGRectMake(self.view.frame.size.width/2, self.view.frame.size.height/2, 200, 21)
+                        self.label.center = CGPointMake(160, 284)
+                        self.label.textAlignment = NSTextAlignment.Center
+                        self.label.text = "No Pending Items"
+                        self.collectionView!.addSubview(self.label)
+                        self.label.hidden = false
+                        
+                    } else {
+                        self.label.hidden = true
+                    }
+                    
                 }
             }
             
@@ -119,8 +143,9 @@ class lpApprovalVC: UICollectionViewController {
                 if cell.lblStatus.text == "Approved" {
                     cell.approve.enabled = false
                     cell.pending.enabled = false
-                } else if cell.lblStatus.text == "Pending for Approval" {
-                    cell.pending.enabled = false
+                } else if cell.lblStatus.text == "Pending For Approval" {
+                    cell.pending.enabled = true
+                    cell.approve.enabled = true
                 } else if cell.lblStatus.text == "Rejected" {
                     cell.pending.enabled = false
                     cell.approve.enabled = false
@@ -180,7 +205,7 @@ class lpApprovalVC: UICollectionViewController {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
-        //NSURLConnection.sen
+        
         
         if let httpresponse = response as? NSHTTPURLResponse {
             print("HTTP response:\(httpresponse.statusCode)")
