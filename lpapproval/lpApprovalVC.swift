@@ -52,6 +52,7 @@ class lpApprovalVC: UICollectionViewController {
                     if let rows: AnyObject = dict["rows"] {
                         var i : Int = 0
                         var j : Int = 1
+                        self.lpApprovalData.removeAll(keepCapacity: true)
                         while(i < totalRecords)
                         {
                             var tempDict = rows[i]["doc"] as! NSMutableDictionary

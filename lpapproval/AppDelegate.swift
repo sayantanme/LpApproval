@@ -16,6 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        IMFClient.sharedInstance().initializeWithBackendRoute("https://lpapproval.mybluemix.net", backendGUID: "ab94b10c-0fa5-4368-b63e-43b8e613fc89")
+        
+        IMFLogger.captureUncaughtExceptions()
+        IMFLogger.setLogLevel(IMFLogLevel.Info)
+        IMFAnalytics.sharedInstance().startRecordingApplicationLifecycleEvents()
+        
+        var logger : IMFLogger = IMFLogger(forName: "AppDelegate")
+        logger.logInfoWithMessages("Test")
+        IMFLogger.send()
         return true
     }
 
@@ -27,10 +36,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        IMFLogger.send()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
